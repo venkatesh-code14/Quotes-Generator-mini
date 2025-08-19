@@ -31,7 +31,7 @@ body {
 #mood-sidebar h2 { text-align: center; margin-bottom: 30px; }
 #mood-sidebar ul { list-style: none; }
 #mood-sidebar ul li { margin-bottom: 15px; }
-.mood-btn1 {
+.mood-btn {
     width: 100%;
     background: #34495e;
     color: #ecf0f1;
@@ -43,48 +43,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
-.mood-btn1:hover, .mood-btn1.active {background-color: #3498db;   transform: translateX(5px); }
-.mood-btn2 {
-    width: 100%;
-    background: #34495e;
-    color: #ecf0f1;
-    border: none;
-    padding: 15px;
-    border-radius: 5px;
-    font-size: 1rem;
-    text-align: left;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-.mood-btn2:hover, .mood-btn2.active { background-color: #3498db; transform: translateX(5px); }
-
-.mood-btn3 {
-    width: 100%;
-    background: #34495e;
-    color: #ecf0f1;
-    border: none;
-    padding: 15px;
-    border-radius: 5px;
-    font-size: 1rem;
-    text-align: left;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-.mood-btn3:hover, .mood-btn3.active { background-color: #3498db; transform: translateX(5px); }
-
-.mood-btn4 {
-    width: 100%;
-    background: #34495e;
-    color: #ecf0f1;
-    border: none;
-    padding: 15px;
-    border-radius: 5px;
-    font-size: 1rem;
-    text-align: left;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-.mood-btn4:hover, .mood-btn4.active { background-color: #3498db; transform: translateX(5px); }
+.mood-btn:hover, .mood-btn1.active {background-color: #3498db;   transform: translateX(5px); }
 
 
 /* --- Main Application Area --- */
