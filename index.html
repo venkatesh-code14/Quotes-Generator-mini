@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Quote Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-layer" id="bg-1"></div>
+    <div class="background-layer" id="bg-2"></div>
+    
+    <nav id="mood-sidebar">
+        <h2>Choose a Mood</h2>
+        <ul>
+            <li><button class="mood-btn1" data-tag="inspirational">Motivational</button></li>
+            <li><button class="mood-btn2" data-tag="happiness">Happy</button></li>
+            <li><button class="mood-btn3" data-tag="love">Love</button></li>
+            <li><button class="mood-btn4" data-tag="wisdom">Wisdom</button></li>
+        </ul>
+    </nav>
+
+    <main id="main-app">
+        <div class="app-controls">
+            <button id="view-favorites-btn" title="View Favorites"><i class="fas fa-star"></i></button>
+        </div>
+
+        <div class="container">
+            <div class="main-content">
+                <div class="quote-wrapper visible">
+                    <div class="text-area"><span class="quote"></span></div>
+                    <div class="person"></div>
+                    <div class="actions"><button id="favorite-btn" title="Save to Favorites"><i class="fa-regular fa-heart"></i></button></div>
+                </div>
+                <div class="button-area"><button id="new-quote-btn">New Quote</button></div>
+            </div>
+
+            <div class="custom-controls">
+                <textarea id="custom-quote-text" placeholder=" write your own quote..."></textarea>
+                <input type="text" id="custom-quote-person" placeholder="Author's Name">
+                <button id="show-custom-quote">Show My Quote</button>
+            </div>
+        </div>
+    </main>
+    
+    <div id="favorites-panel" class="favorites-panel">
+        <div class="favorites-header">
+            <h2>Your Favorites</h2>
+            <button id="close-favorites-btn">&times;</button>
+        </div>
+        <div id="favorites-list" class="favorites-list"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
