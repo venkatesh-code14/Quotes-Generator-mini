@@ -1,8 +1,3 @@
-/**
- * Smart Quote Generator
- * This version uses a sidebar for mood selection and a local library of quotes
- * for a fast, reliable, and user-friendly experience.
- */
 
 // --- DOM ELEMENT SELECTORS ---
 const moodButtons = document.querySelectorAll('.mood-btn');
@@ -84,7 +79,7 @@ const sentimentKeywords = {
 };
 const defaultColor = '#556B2F';
 
-// --- CORE FUNCTIONS ---
+
 
 /**
  * Displays a new random quote AND background from a specified mood library.
@@ -118,7 +113,7 @@ function displayNewQuote(tag) {
     }
 }
 
-/**
+/*
  * Updates the quote text in the UI with a fade effect.
  */
 function updateQuoteText(quote, person) {
@@ -130,7 +125,7 @@ function updateQuoteText(quote, person) {
     }, 400);
 }
 
-/**
+/*
  * Changes the background with a smooth cross-fade effect.
  * This function contains the crucial bug fix.
  */

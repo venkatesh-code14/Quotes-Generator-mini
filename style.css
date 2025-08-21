@@ -1,5 +1,11 @@
-/* --- General Styles & Resets --- */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+
+* {
+     margin: 0; 
+     padding: 0; 
+     box-sizing: border-box; 
+     font-family: 'Roboto', sans-serif; 
+}
+
 body {
     display: flex; /* Use flexbox for sidebar layout */
       background-image: linear-gradient(to bottom, #03396c,#005b96,#6497b1,#b3cde0);           
@@ -123,7 +129,7 @@ body {
 }
 
 #new-quote-btn { 
-    background-color: #f1c40f; /* From #2193b0 */
+    background-color: #daa520; /* From #2193b0 */
     color: #2c3e50;
     font-size: 1.2rem;
     font-weight: bold; 
