@@ -156,22 +156,43 @@ function changeBackground(newBackground) {
 }
 
 // --- FAVORITES (localStorage) FUNCTIONS ---
-function getFavorites() { return JSON.parse(localStorage.getItem('favoriteQuotes')) || []; }
 
+/**
+ * Retrieves the array of favorite quotes from localStorage.
+ * @returns {Array} - The array of favorite quotes.
+ */
+function getFavorites() {
+    return JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
+}
+
+/**
+ * Adds or removes the current quote from the favorites list.
+ */
 function toggleFavorite() {
-    if (!currentQuote.id || currentQuote.id === 'custom') return;
+    // CHANGE: This now allows quotes with any ID (including custom ones) to be saved.
+    if (!currentQuote.id){ return;
+    // ... rest of the function
+    }
+
     let favorites = getFavorites();
     const isFavorited = favorites.some(fav => fav.id === currentQuote.id);
 
     if (isFavorited) {
+        // If it's already a favorite, remove it
         favorites = favorites.filter(fav => fav.id !== currentQuote.id);
     } else {
+        // If it's not a favorite, add it
         favorites.push(currentQuote);
     }
+    
+    // Save the updated list back to localStorage
     localStorage.setItem('favoriteQuotes', JSON.stringify(favorites));
     checkIfFavorited();
 }
 
+/**
+ * Updates the heart icon's appearance based on whether the current quote is a favorite.
+ */
 function checkIfFavorited() {
     const favorites = getFavorites();
     const isFavorited = currentQuote.id && favorites.some(fav => fav.id === currentQuote.id);
@@ -179,13 +200,22 @@ function checkIfFavorited() {
     favoriteBtn.innerHTML = isFavorited ? '<i class="fas fa-heart"></i>' : '<i class="fa-regular fa-heart"></i>';
 }
 
+/**
+ * Displays the list of saved quotes in the favorites panel.
+ */
 function displayFavorites() {
     const favorites = getFavorites();
+
+    // THIS IS THE MOST IMPORTANT FIX:
+    // This line clears the list completely before adding the items back.
+    // This prevents duplicates from showing up.
     favoritesList.innerHTML = '';
+
     if (favorites.length === 0) {
         favoritesList.innerHTML = '<p>You haven\'t saved any favorites yet.</p>';
         return;
     }
+
     favorites.forEach(fav => {
         const item = document.createElement('div');
         item.classList.add('favorite-item');
@@ -217,21 +247,29 @@ favoriteBtn.addEventListener('click', toggleFavorite);
 viewFavoritesBtn.addEventListener('click', () => {
     displayFavorites();
     favoritesPanel.classList.add('open');
+
 });
+
+// THIS IS THE FIX: Add this event listener for the close button
 closeFavoritesBtn.addEventListener('click', () => {
     favoritesPanel.classList.remove('open');
 });
 showCustomQuoteBtn.addEventListener('click', () => {
     const quote = customQuoteText.value || "You forgot to write a quote!";
     const person = customQuotePerson.value || "Anonymous";
-    currentQuote = { id: 'custom', quote, person };
-    updateQuoteText(quote, person);
-    
-    // FIX: Hide the favorite button for custom quotes
-    favoriteBtn.style.display = 'none';
 
+    // CHANGE #1: Ensure the favorite button is now visible.
+    favoriteBtn.style.display = 'block';
+
+    // CHANGE #2: Give the custom quote a unique ID (using its own text).
+    currentQuote = { id: quote, quote, person };
+    
+    updateQuoteText(quote, person);
     const backgroundColor = analyzeQuoteSentiment(quote);
     changeBackground(backgroundColor);
+
+    // CHANGE #3: Check if this custom quote has been favorited before.
+    checkIfFavorited();
 });
 
 // --- INITIALIZATION ---
